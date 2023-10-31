@@ -1,4 +1,4 @@
-NODE-LDAP
+4Q-NODE-LDAP
 
 ## build
 `npm run build`
@@ -9,7 +9,7 @@ Whenever this package is updated locally the changes will be available in the pr
 `npm link`
 
 * In the project where you want to use this package link the npm package locally with
-`npm link node-ldap`
+`npm link 4q-node-ldap`
 
 ## publish
 Any changes made must first be built and then version increased
