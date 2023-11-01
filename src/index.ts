@@ -40,6 +40,10 @@ export async function Connect(url: string, baseDN: string, username: string, pas
     groups: async (username: string) => {
       return ad.getGroupMembershipForUserAsync(username)
         .then((groups: any) => groups.map((group: any) => group.dn));
+    },
+    user: async (username: string) => {
+      const user = await ad.user(username).get();
+      return user;
     }
   }
 }
