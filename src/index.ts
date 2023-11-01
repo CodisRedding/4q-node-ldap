@@ -23,13 +23,14 @@ export async function Connect(url: string, baseDN: string, username: string, pas
     rawActiveDirectory: ad,
     authenticate: async (username: string, password: string) => {
       return new Bluebird.Promise((resolve: any, reject: any) => {
-        return ad.authenticate(username, password, (err: any, auth: any) => {
+        return ad.authenticate(username, password, async (err: any, auth: any) => {
           if (err) {
             return reject(new Error(err));
           }
     
           if (auth) {
-            return resolve(auth);
+            const user = await ad.user(username).get();
+            return resolve(user);
           }
     
           return reject(new Error("Unknown auth error"));
