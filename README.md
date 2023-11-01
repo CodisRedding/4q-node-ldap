@@ -1,4 +1,40 @@
-4Q-NODE-LDAP
+# Async/Await ldap wrapper 
+
+## Goal
+
+Expose our most used ldap functions as async/await for use across projects.
+
+## Features
+
+- Authentication
+- Get user groups
+- Expose raw ldap client
+
+## Usage
+
+### Installation
+
+```sh
+npm install 4q-node-ldap --save
+```
+
+```javascript
+const ldap = require('4q-node-ldap');
+
+const ldapConn = await ldap.Connect(
+    'ldaps://ldaps.example.com',
+    'DC=example,DC=com',
+    'service-user@example.com',
+    'password',
+    { /* tls options */ },
+    { /* ldap options */ }
+);
+
+await ldapConn.authenticate('other-user@example.com', 'password');
+await ldapConn.groups('other-user@example.com');
+```
+
+
 
 ## build
 `npm run build`
